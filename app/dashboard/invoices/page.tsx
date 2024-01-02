@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   title: 'Invoices',
 };
 
+export async function PaginationWrapper({ query }: { query: string }) {
+  const totalPages = await fetchInvoicesPages(query || '');
+  return <Pagination totalPages={totalPages} />;
+}
+
 export default async function Page({
   searchParams,
 }: {
@@ -37,8 +42,8 @@ export default async function Page({
         <Table query={query} currentPage={currentPage} />
       </Suspense>
       <div className="mt-5 flex w-full justify-end">
-        <Suspense fallback={<p>Loading...</p>}>
-          <Pagination query={query} />
+        <Suspense fallback={<PagingSkeleton />}>
+          <PaginationWrapper query={query} />
         </Suspense>
       </div>
     </div>

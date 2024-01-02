@@ -21,7 +21,7 @@ export async function fetchRevenue() {
     // Don't do this in production :)
 
     const data = await sql<Revenue>`SELECT * FROM revenue`;
-    
+
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
@@ -138,7 +138,7 @@ export async function fetchInvoicesPages(query: string) {
       invoices.date::text ILIKE ${`%${query}%`} OR
       invoices.status ILIKE ${`%${query}%`}
   `;
-
+   
     const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
     return totalPages;
   } catch (error) {
