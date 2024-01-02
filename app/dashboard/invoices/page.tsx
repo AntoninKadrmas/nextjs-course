@@ -1,22 +1,16 @@
-import Pagination from '@/app/ui/invoices/pagination';
 import Search from '@/app/ui/search';
 import Table from '@/app/ui/invoices/table';
 import { CreateInvoice } from '@/app/ui/invoices/buttons';
 import { lusitana } from '@/app/ui/fonts';
 import { InvoicesTableSkeleton, PagingSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
-import { fetchInvoicesPages } from '@/app/lib/data';
 
 import { Metadata } from 'next';
+import { PaginationWrapper } from '@/app/ui/dashboard/pagination-wrapper';
 
 export const metadata: Metadata = {
   title: 'Invoices',
 };
-
-export async function PaginationWrapper({ query }: { query: string }) {
-  const totalPages = await fetchInvoicesPages(query || '');
-  return <Pagination totalPages={totalPages} />;
-}
 
 export default async function Page({
   searchParams,
