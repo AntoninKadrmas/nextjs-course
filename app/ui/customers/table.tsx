@@ -5,6 +5,8 @@ import {
   CustomersTableType,
   FormattedCustomersTable,
 } from '@/app/lib/definitions';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { generatePagination } from '@/app/lib/utils';
 
 export default async function CustomersTable({
   customers,
