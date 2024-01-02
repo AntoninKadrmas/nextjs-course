@@ -1,3 +1,5 @@
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+
 // Loading animation
 const shimmer =
   'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent';
@@ -161,6 +163,19 @@ export function InvoicesMobileSkeleton() {
       </div>
     </div>
   );
+}
+
+export function PagingSkeleton(){
+  const classNameLeft = 
+    'flex h-10 w-10 items-center justify-center rounded-md border hover:bg-gray-100 mr-2 md:mr-4'
+  const classNameRight = 
+    'flex h-10 w-10 items-center justify-center rounded-md border hover:bg-gray-100 ml-2 md:ml-4'
+    
+  
+  return <div className="inline-flex">
+       {/* <div className={className}><ArrowLeftIcon className="w-4" /></div>
+       <div className={className}><ArrowLeftIcon className="w-4" /></div> */}
+      </div>
 }
 
 export function InvoicesTableSkeleton() {

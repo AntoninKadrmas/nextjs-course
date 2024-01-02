@@ -5,9 +5,13 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { generatePagination } from '@/app/lib/utils';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { fetchInvoicesPages } from '@/app/lib/data';
 
-export default function Pagination({ totalPages }: { totalPages: number }) {
+export default async function Pagination({ query }: { query: string }) {
   // NOTE: comment in this code when you get to this point in the course
+  console.log(query);
+  
+  const totalPages = await fetchInvoicesPages(query);
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get('page'))||1
